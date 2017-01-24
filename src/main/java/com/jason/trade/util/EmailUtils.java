@@ -1,13 +1,11 @@
 package com.jason.trade.util;
 
-import com.google.common.collect.Lists;
 import com.jason.trade.common.OpResult;
 import com.jason.trade.enums.OpCodeEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -21,7 +19,7 @@ import java.util.regex.Pattern;
 /**
  * Created by zhangliang17 on 16/11/16.
  */
-@Component
+//@Component
 public class EmailUtils {
 
     private static final String REG_EMAIL = "^[\\w-]+(\\.[\\w-]+)*@[\\w-]+(\\.[\\w-]+)+$";
@@ -145,8 +143,8 @@ public class EmailUtils {
 
     }
 
-    public static void main(String [] args) {
-        sendEmail("来信回复", Lists.newArrayList("tozhuzhiqing@hotmail.com"),"你好，您的报名邮件已收到");
-    }
+//    public static void main(String [] args) {
+//        sendEmail("来信回复", Lists.newArrayList("tozhuzhiqing@hotmail.com"),"你好，您的报名邮件已收到");
+//    }
 }
 

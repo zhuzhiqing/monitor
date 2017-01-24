@@ -1,7 +1,7 @@
 package com.jason.trade.service;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.jason.trade.command.TickerCommand;
 import com.jason.trade.mapper.TickMapper;
 import org.springframework.stereotype.Service;
@@ -22,8 +22,9 @@ public class TickerService {
 
     public void process() {
         String tickStr = tickerCommand.getHttpResult();
-        JSONArray jsonArray = JSON.parseArray(tickStr);
-
-        System.out.println(jsonArray);
+        JSONObject jsonObject = (JSONObject)JSON.parse(tickStr);
+//        jsonObject
+        jsonObject.entrySet();
+        System.out.println(jsonObject);
     }
 }

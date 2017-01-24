@@ -1,6 +1,6 @@
 package com.jason.trade.mapper;
 
-import com.jason.trade.model.Tick;
+import com.jason.trade.model.TickDO;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -12,6 +12,6 @@ public interface TickMapper {
      *
      * @mbg.generated
      */
-    int insert(Tick record);
+    int insert(TickDO record);
 
 }
