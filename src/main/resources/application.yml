@@ -23,3 +23,7 @@ spring:
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   typeAliasesPackage: com.jason.learn.model
+
+logging:
+  level: info
+  path: /data/applogs/monitor
