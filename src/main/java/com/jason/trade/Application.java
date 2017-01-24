@@ -1,6 +1,5 @@
 package com.jason.trade;
 
-import com.jason.trade.service.TickerService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * Created by jason on 17/1/24.
@@ -26,13 +23,9 @@ import javax.annotation.Resource;
 @EnableAutoConfiguration
 public class Application {
 
-    @Resource
-    TickerService tickerService;
-
     @RequestMapping("/")
     @ResponseBody
     String home() {
-        tickerService.insert();
         return "Hello World!";
     }
 

@@ -1,7 +1,9 @@
 package com.jason.trade.service;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.jason.trade.command.TickerCommand;
 import com.jason.trade.mapper.TickMapper;
-import com.jason.trade.model.Tick;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,18 +17,13 @@ public class TickerService {
     @Resource
     TickMapper tickDao;
 
-    public void insert(){
-        Tick record = new Tick();
-        record.setBaseVol(10);
-        record.setCurrencyId(1);
-        record.setPrice(1);
-        record.setHigestBid(1);
-        record.setHigh24h(1);
-        record.setLow24h(1);
-        record.setLowestAsk(1);
-        record.setPercentChange(1);
-        record.setQuoteVol(1);
+    @Resource
+    TickerCommand tickerCommand;
 
-        tickDao.insert(record);
+    public void process() {
+        String tickStr = tickerCommand.getHttpResult();
+        JSONArray jsonArray = JSON.parseArray(tickStr);
+
+        System.out.println(jsonArray);
     }
 }

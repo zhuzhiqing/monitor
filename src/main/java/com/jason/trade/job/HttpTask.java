@@ -2,6 +2,7 @@ package com.jason.trade.job;
 
 import com.google.common.base.Stopwatch;
 import com.jason.trade.command.TickerCommand;
+import com.jason.trade.service.TickerService;
 import com.jason.trade.util.ApacheHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,10 +23,12 @@ public class HttpTask {
     @Resource
     TickerCommand tickerCommand;
 
+    @Resource
+    TickerService tickerService;
+
     @Scheduled(fixedRate = 10 * 1000)
     public void task() throws InterruptedException {
-        String rst = tickerCommand.getHttpResult();
-        logger.info(rst);
+        tickerService.process();
     }
 
     @Async
