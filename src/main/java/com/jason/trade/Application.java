@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * Hello world!
- *
+ * Created by jason on 17/1/24.
  */
 @SpringBootApplication
 @RestController
@@ -25,7 +24,7 @@ import javax.annotation.Resource;
 @EnableAsync
 @Controller
 @EnableAutoConfiguration
-public class SampleController {
+public class Application {
 
     @Resource
     TickerService tickerService;
@@ -38,6 +37,7 @@ public class SampleController {
     }
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(SampleController.class, args);
+        SpringApplication.run(Application.class, args);
     }
+
 }
