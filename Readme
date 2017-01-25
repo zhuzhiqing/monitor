@@ -1,0 +1,6 @@
+1.run from ide
+	mvn spring-boot:run
+
+2.run from executable jar
+	java -jar target/monitor-1.0-SNAPSHOT.jar
+

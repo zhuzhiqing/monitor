@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jason.trade.mapper.CurrencyMapper">
+    <resultMap id="BaseResultMap" type="com.jason.trade.model.CurrencyDO">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="currency_id" jdbcType="INTEGER" property="currencyId" />
+        <result column="currency_name" jdbcType="VARCHAR" property="currencyName" />
+        <result column="currency_code" jdbcType="VARCHAR" property="currencyCode" />
+        <result column="utm_update" jdbcType="TIMESTAMP" property="utmUpdate"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, currency_id, currency_name, currency_code
+    </sql>
+    <insert id="insert" parameterType="com.jason.trade.model.CurrencyDO">
+        insert into currency (id, currency_id, currency_name,currency_code)
+        values (#{currencyId,jdbcType=INTEGER},
+        #{currencyName,jdbcType=VARCHAR},#{currencyCode,jdbcType=VARCHAR},
+        #{utm_update,jdbcType=TIMESTAMP})
+        ON DUPLICATE KEY
+        UPDATE
+        currency_id = #{currencyId,jdbcType=BIGINT},
+        currency_name = #{currencyName,jdbcType=VARCHAR},
+        currency_code = #{currencyCode,jdbcType=VARCHAR},
+        utm_update = now()
+    </insert>
+
+    <insert id="insertOrUpdateViaList" parameterType="java.util.List">
+        insert into currency
+        (id, currency_id, currency_name,currency_code,utm_update)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id,jdbcType=BIGINT}, #{item.currencyId,jdbcType=BIGINT}, #{item.currencyName,jdbcType=VARCHAR},
+            #{item.currencyCode,jdbcType=VARCHAR}, now())
+        </foreach>
+        ON DUPLICATE KEY
+        UPDATE
+        currency_id = VALUES (currency_id),
+        currency_name = VALUES (currency_name),
+        currency_code = VALUES (currency_code),
+        utm_update =  now()
+    </insert>
+
+    <select id="findAll" resultMap="BaseResultMap">
+    select
+        <include refid="Base_Column_List"/>
+    from
+        currency
+    </select>
+</mapper>
