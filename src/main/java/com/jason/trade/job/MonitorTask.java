@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MonitorTask {
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 60*1000)
     public void task() {
         PoolStats poolStats = ApacheHttpClient.getPoolStatus();
         System.out.println(poolStats.toString());

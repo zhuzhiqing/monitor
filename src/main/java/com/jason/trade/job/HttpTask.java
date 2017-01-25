@@ -30,12 +30,12 @@ public class HttpTask {
     @Resource
     CurrencyService currencyService;
 
-    @Scheduled(fixedRate = 10 * 1000)
+    @Scheduled(fixedRate = 60 * 1000)
     public void task() throws InterruptedException {
         tickerService.process();
     }
 
-    @Scheduled(fixedRate = 100 * 1000)
+    @Scheduled(fixedRate = 600 * 1000)
     public void currencyTask() throws InterruptedException {
         currencyService.process();
     }
