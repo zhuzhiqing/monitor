@@ -1,6 +1,8 @@
-1.run from ide
+method 1.run from ide
 	mvn spring-boot:run
 
-2.run from executable jar
+method 2.run from executable jar
 	java -jar target/monitor-1.0-SNAPSHOT.jar
 
+method 3. into the source fold
+   mvn clean && mvn package && java -jar target/monitor-1.0-SNAPSHOT.jar
